@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html> 
+<head>
+    <title>JavaScript Prompt</title>
+</head>
+<body>
+    <h1>JavaScript Prompt</h1>
+    <p>
+        JavaScript provides three methods for interacting with users: alert, prompt, and confirm.
+    <br>   
+        The alert method displays a message to the user and waits for them to click "OK".
+    <br>   
+        The prompt method displays a message and an input field, allowing the user to enter a value. 
+    <br>   
+        The confirm method displays a message and two buttons, "OK" and "Cancel", allowing the user to make a choice.
+    </p>
+
+    <i>
+        let name = prompt("What is your name?", "Guest");
+        <br>
+        alert("Hello, " + name + "!");
+        <br>
+        let isBoss = confirm("Are you the boss?");
+        <br>
+        alert( name + " is " + (isBoss ? "" : "not ") + "the boss"); // true if OK is pressed
+    </i>
+
+    <script>
+        let name = prompt("What is your name?", "Guest");
+        alert("Hello, " + name + "!");
+
+        let isBoss = confirm("Are you the boss?");
+        alert( name + " is " + (isBoss ? "" : "not ") + "the boss"); // true if OK is pressed
+    </script>
+</body>
+</html>
