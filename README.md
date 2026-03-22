@@ -439,7 +439,6 @@ Note: Arrays are objects
 typeof undefined // "undefined"
 typeof 0 // "number"
 typeof 10n // "bigint"
-
 typeof true // "boolean"
 typeof "foo" // "string"
 typeof Symbol("id") // "symbol"
@@ -460,6 +459,12 @@ class A {}
 console.log(typeof A); // "function"
 console.log(typeof document.all); // "undefined" 
 There’s no special “function” type in JavaScript. Functions belong to the object type. But typeof treats them differently, returning "function"
+
+console.log(NaN == NaN);   // false
+console.log(NaN === NaN);  // false
+Number.isNaN(NaN); // true
+
+The void operator always returns undefined, no matter what the value is
 
 ### Copy By Value:
 let a = 10;
