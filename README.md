@@ -27,11 +27,12 @@
 18. Class
 19. Modules
 20. Proxy and Targets
-21. Best Practices
-22. Conclusion
-23. Suggested Next Topics
-24. Contribute
-25. License  
+21. Sorting Types
+22. Best Practices
+23. Conclusion
+24. Suggested Next Topics
+25. Contribute
+26. License  
 
 ---
 
@@ -1672,7 +1673,157 @@ const virtualProxy = new Proxy({}, virtualHandler);
 console.log(virtualProxy.greet()); // Outputs: Hello!
 
 
-## 21. Best Practices
+## 21. Sorting
+
+### 1. Bubble Sort
+Repeatedly compare adjacent elements and swap if they are in the wrong order. Largest element “bubbles” to the end.
+
+Time Complexity:
+Best: O(n)
+Average: O(n²)
+Worst: O(n²)
+
+Where to apply: Small datasets, When simplicity matters more than performance
+Simple but inefficient
+
+Example:
+Array: [5, 4, 3, 2]
+Pass 1:
+Compare 5 & 4 → swap → [4, 5, 3, 2]
+Compare 5 & 3 → swap → [4, 3, 5, 2]
+Compare 5 & 2 → swap → [4, 3, 2, 5]
+Pass 2:
+Compare 4 & 3 → swap → [3, 4, 2, 5]
+Compare 4 & 2 → swap → [3, 2, 4, 5]
+Compare 4 & 5 → swap → [3, 2, 4, 5] (already correct)
+Pass 3:
+Compare 3 & 2 → swap → [3, 2, 4, 5]
+Compare 3 & 4 → swap → [2, 3, 4, 5] (already correct)
+Sorted
+
+### 2. Selection Sort
+Selects the minimum element and places it at the correct position
+
+Time Complexity:
+Best: O(n²)
+Average: O(n²)
+Worst: O(n²)
+
+Where to apply: When memory writes are costly (fewer swaps than bubble sort)
+Small datasets
+
+Example:
+Array: [5, 4, 3, 2]
+Find minimum in [5, 4, 3, 2] → 2
+Swap with first element (5)
+[2, 4, 3, 5]
+Pass 2 (i = 1)
+Find minimum in [4, 3, 5] → 3
+Swap with 4
+[2, 3, 4, 5]
+Pass 3 (i = 2)
+Find minimum in [4, 5] → already 4
+No swap needed
+[2, 3, 4, 5]
+Pass 4 (i = 3)
+Only one element left → already sorted
+
+### 3. Insertion Sort
+Build the sorted array one element at a time by inserting each element into its correct position.
+Efficient for small datasets
+
+Time Complexity:
+Best: O(n)
+Average: O(n²)
+Worst: O(n²)
+
+Where to apply: Small or nearly sorted arrays, Real-time data insertion
+
+Example:
+Array: [5, 4, 3, 2]
+Pass 1 (Insert 4)
+Compare 4 with 5 → 4 < 5 → shift 5 right
+Insert 4 at correct position
+[4, 5, 3, 2]
+Pass 2 (Insert 3)
+Compare 3 with 5 → shift
+Compare 3 with 4 → shift
+Insert 3 at beginning
+[3, 4, 5, 2]
+Pass 3 (Insert 2)
+Compare 2 with 5 → shift
+Compare 2 with 4 → shift
+Compare 2 with 3 → shift
+Insert 2 at beginning
+[2, 3, 4, 5]
+
+
+### 4. Merge Sort
+Divide array into halves, sort each half, then merge them.
+
+Time Complexity:
+Best: O(n log n)
+Average: O(n log n)
+Worst: O(n log n)
+
+Where to apply: Large datasets, When stable sorting is needed, Linked lists
+
+Example:
+Array: [5, 3, 2, 4]
+Divide:
+[5, 3] and [2, 4]
+Sort:
+[3, 5] and [2, 4]
+Merge:
+[2, 3, 4, 5]
+
+### 5. Quick Sort
+Very fast in practice, but worst case O(n²)
+Pick a pivot, partition array into:
+Elements smaller than pivot
+Elements greater than pivot
+Then recursively sort partitions.
+
+Time Complexity:
+Best: O(n log n)
+Average: O(n log n)
+Worst: O(n²) (bad pivot)
+
+Where to apply: General-purpose sorting, Faster in practice than merge sort
+Used in many libraries
+
+Example:
+Array: [5, 3, 2, 4], pivot = 4
+Left: [3, 2]
+Right: [5]
+Sort both:
+[2, 3], [5]
+Result:
+[2, 3, 4, 5]
+
+### 6. Heap Sort
+Convert array into a heap (max heap), then repeatedly extract the largest element and rebuild heap.
+
+Time Complexity:
+Best: O(n log n)
+Average: O(n log n)
+Worst: O(n log n)
+
+Where to apply: When guaranteed O(n log n) is required, When memory usage must be minimal (in-place sorting)
+
+Example:
+[5,4,3,2]
+swap root (5) with last element (2)
+Heapify remaining elements
+[2, 4, 3, 5] → heapify → [4, 2, 3, 5]
+Iteration 2:
+Swap root (4) with last unsorted element (3)
+[3, 2, 4, 5] → heapify → [3, 2, 4, 5]
+Iteration 3:
+Swap root (3) with last unsorted element (2)
+[2, 3, 4, 5]
+
+## 22. Best Practices
 
 - Use `===`/`!==`.
 - Prefer `const` and `let` over `var`.
@@ -1681,12 +1832,12 @@ console.log(virtualProxy.greet()); // Outputs: Hello!
 - Use linting (`ESLint`) and formatting (`Prettier`).
 
 
-## 22. Conclusion
+## 23. Conclusion
 
 JavaScript is versatile and widely-used for web, server, and tooling. Mastering core concepts (scope, async, types, and modern ES syntax) sets a strong foundation.
 
 
-## 23. Suggested Next Topics
+## 24. Suggested Next Topics
 
 - Advanced closures and prototypes.
 - Event loop and microtasks.
@@ -1695,7 +1846,7 @@ JavaScript is versatile and widely-used for web, server, and tooling. Mastering 
 - Frameworks: React, Vue, Angular.
 
 
-## 24. Contribute
+## 25. Contribute
 
 1. Fork repository.
 2. Create feature branch: `git checkout -b feature/docs`
@@ -1704,6 +1855,6 @@ JavaScript is versatile and widely-used for web, server, and tooling. Mastering 
 5. Push and open PR.
 
 
-## 25. License
+## 26. License
 
 MIT License. See `LICENSE` file for details.

@@ -558,3 +558,25 @@ try {
 } catch (e) {
     console.log(e.message);
 }
+
+// Others:
+// 101. What is the output? !important
+(function() {
+  var a = b = 5;
+})();
+console.log(typeof a);
+console.log(typeof b);
+
+// 102. What is the output?
+console.log(0.1 + 0.2);
+console.log(Math.max());
+console.log(Math.min());
+
+// 103. What is the output?
+console.log(typeof class {});
+
+// 104. What is the output? !important
+console.log(1>2>3);
+
+// 105. What is the output? !important
+console.log(1<2<3);
