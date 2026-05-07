@@ -25,6 +25,7 @@ console.log(reversed); // Output: !dlroW ,olleH
 // Time Complexity: O(n)
 // Space Complexity: O(1) - no additional space used
 
+// Two Pointer algorithm
 function isPalindrome(str) {
     let left = 0;
     let right = str.length - 1;
@@ -173,6 +174,7 @@ console.log(countWords("   JavaScript is awesome   ")); // Output: 4
 // Time Complexity: O(n)
 // Space Complexity: O(n) - due to the set used for tracking characters
 
+// Variable Sliding window
 function longestUniqueSubstring(str) {
     let longest = "";
     let current = "";
